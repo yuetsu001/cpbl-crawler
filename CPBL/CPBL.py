@@ -1,10 +1,10 @@
 from collections import OrderedDict
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
+from CPBL import datatype
 import xmltodict
 import urllib3
 import itertools
-import datatype
 import json
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -106,8 +106,6 @@ def get_player_info(player_id, get_batting_score=False, get_pitching_score=False
                 if(list(targs.values())[ft] not in player_info[i]):
                     player_info[i][list(targs.values())[ft]] = {}
                 player_info[i][list(targs.values())[ft]][tag] = json.loads(res.json()[list(targs.values())[ft]])
-        if(get_fighter_score):
-            player_info[i]['FighterScore'] = _get_fighter_score(ses, i, [keys[0], keys[4]], info_data['pos']['desc'])
     return player_info
 
 

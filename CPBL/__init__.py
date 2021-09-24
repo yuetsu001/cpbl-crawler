@@ -1,1 +1,1 @@
-from CPBL import CPBL
+from CPBL.CPBL import *
